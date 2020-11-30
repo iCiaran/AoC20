@@ -45,10 +45,15 @@ func runSingle(challenges map[int]challenge, day int, a, b bool) {
 }
 
 func main() {
-	challenges := make(map[int]challenge, 25)
+	challenges := make_challenges()
 
-	runSingle(challenges, 0, true, true)
 	for i := 1; i < 26; i++ {
 		runSingle(challenges, i, true, true)
 	}
+}
+
+func make_challenges() map[int]challenge {
+	challenges := make(map[int]challenge, 25)
+
+	return challenges
 }
