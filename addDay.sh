@@ -20,10 +20,10 @@ mkdir -p ${base}/cmd/run
 touch ${base}/inputs/real_a.txt
 touch ${base}/inputs/real_b.txt
 
-cp main.template "${base}/${base}.go"
-cp test.template "${base}/${base}_test.go"
-cp run.template "${base}/cmd/run/main.go"
-cp run_sh.template "${base}/run.sh"
+cp templates/day.template "${base}/${base}.go"
+cp templates/test.template "${base}/${base}_test.go"
+cp templates/run.template "${base}/cmd/run/main.go"
+cp templatesrun_sh.template "${base}/run.sh"
 
 for f in $(find ${base} -type f)
 do
