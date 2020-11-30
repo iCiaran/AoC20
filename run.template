@@ -8,6 +8,6 @@ import (
 
 func main() {
 	day := day_##DAY##.New()
-	fmt.Println(day.PartA("inputs/real_a.txt"))
-	fmt.Println(day.PartB("inputs/real_b.txt"))
+	fmt.Println(day.PartA("../../inputs/real_a.txt"))
+	fmt.Println(day.PartB("../../inputs/real_b.txt"))
 }

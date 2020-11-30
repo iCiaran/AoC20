@@ -3,8 +3,6 @@ package main
 import (
 	"fmt"
 	"time"
-
-	"github.com/iCiaran/AoC20/day_00"
 )
 
 type challenge interface {
@@ -48,7 +46,6 @@ func runSingle(challenges map[int]challenge, day int, a, b bool) {
 
 func main() {
 	challenges := make(map[int]challenge, 25)
-	challenges[0] = day_00.New()
 
 	runSingle(challenges, 0, true, true)
 	for i := 1; i < 26; i++ {

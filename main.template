@@ -1,14 +1,19 @@
-package main
+package day_##DAY##
 
 import (
 	"bufio"
-	"fmt"
 	"log"
 	"os"
 )
 
-func getLines(filename string) []string {
-	file, err := os.Open("inputs/" + filename)
+type Day_##DAY## struct{}
+
+func New() *Day_##DAY## {
+	return &Day_##DAY##{}
+}
+
+func getLines(filepath string) []string {
+	file, err := os.Open(filepath)
 	if err != nil {
 		log.Fatal(err)
 		os.Exit(1)
@@ -25,16 +30,10 @@ func getLines(filename string) []string {
 	return lines
 }
 
-func partA(input string) string {
-	return "A"
+func (d *Day_##DAY##) PartA(input string) string {
+    return "A"
 }
 
-func partB(input string) string {
+func (d *Day_##DAY##) PartB(input string) string {
 	return "B"
-}
-
-func main() {
-	input := "real.txt"
-	fmt.Println(partA(input))
-	fmt.Println(partB(input))
 }

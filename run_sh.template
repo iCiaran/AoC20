@@ -1,0 +1,4 @@
+#!/bin/bash
+cd cmd/run
+go build -o day_##DAY##.out .  && ./day_##DAY##.out
+cd - > /dev/null
