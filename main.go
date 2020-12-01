@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"time"
+
+	"github.com/iCiaran/AoC20/day_01"
 )
 
 type challenge interface {
@@ -54,6 +56,8 @@ func main() {
 
 func make_challenges() map[int]challenge {
 	challenges := make(map[int]challenge, 25)
+
+	challenges[1] = day_01.New()
 
 	return challenges
 }
