@@ -40,20 +40,21 @@ func getLines(filepath string) []string {
 }
 
 func parseRecord(line string) *record {
-	split := strings.Split(line, " ")
-	minmax := strings.Split(split[0], "-")
-	min, err := strconv.Atoi(minmax[0])
+	fields := strings.FieldsFunc(line, func(r rune) bool {
+		return r == ' ' || r == ':' || r == '-'
+	})
+	min, err := strconv.Atoi(fields[0])
 	if err != nil {
 		log.Fatal(err)
 		os.Exit(1)
 	}
-	max, err := strconv.Atoi(minmax[1])
+	max, err := strconv.Atoi(fields[1])
 	if err != nil {
 		log.Fatal(err)
 		os.Exit(1)
 	}
-	letter := split[1][0]
-	return &record{min, max, letter, split[2]}
+
+	return &record{min, max, fields[2][0], fields[3]}
 }
 
 func checkValidMinMax(r *record) bool {
