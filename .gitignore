@@ -2,3 +2,4 @@ AoC20
 *.out
 *.pdf
 *.prof
+*.test
