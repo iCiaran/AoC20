@@ -14,7 +14,7 @@ func New() *Day_05 {
 	return &Day_05{}
 }
 
-func getLines(filepath string) []string {
+func getLines(filepath string) []int {
 	file, err := os.Open(filepath)
 	if err != nil {
 		log.Fatal(err)
@@ -22,11 +22,11 @@ func getLines(filepath string) []string {
 	}
 	defer file.Close()
 
-	var lines []string
+	var lines []int
 
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
-		lines = append(lines, scanner.Text())
+		lines = append(lines, decode(scanner.Text()))
 	}
 
 	return lines
@@ -45,53 +45,33 @@ func decode(line string) int {
 	return total
 }
 
-func getHighestSeatId(input []string) int {
+func getHighestSeatId(input []int) int {
 	max := 0
 	for _, line := range input {
-		total := decode(line)
 
-		if total > max {
-			max = total
+		if line > max {
+			max = line
 		}
 	}
 	return max
 }
 
-func getTakenSeats(input []string) (map[int]bool, int) {
-	max := 0
-	seats := make(map[int]bool)
-	for _, line := range input {
-
-		total := decode(line)
-
-		if total > max {
-			max = total
-		}
-
-		seats[total] = true
-	}
-
-	return seats, max
-}
-
-func getMissingSeat(input []string) int {
+func getMissingSeat(input []int) int {
 	max := 0
 	min := math.MaxInt64
 	total := 0
 
 	for _, line := range input {
 
-		ref := decode(line)
-
-		if ref > max {
-			max = ref
+		if line > max {
+			max = line
 		}
 
-		if ref < min {
-			min = ref
+		if line < min {
+			min = line
 		}
 
-		total += ref
+		total += line
 	}
 
 	sum := (max - min + 1) * (min + max) / 2
