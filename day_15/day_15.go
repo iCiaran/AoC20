@@ -39,19 +39,18 @@ func getLines(filepath string) []int {
 	return lines
 }
 
-func (d *Day_15) PartA(input string) string {
-	lastSeen := make(map[int]int)
+func playGame(turns int, startingNumbers []int) int {
+	lastSeen := make([]int, turns)
 
 	turn := 1
 	lastSpoken := 0
-	startingNumbers := getLines(input)
 
-	for turn <= 2020 {
+	for turn <= turns {
 		next := 0
 		if turn <= len(startingNumbers) {
 			next = startingNumbers[turn-1]
-		} else if t, ok := lastSeen[lastSpoken]; ok {
-			next = turn - t
+		} else if lastSeen[lastSpoken] > 0 {
+			next = turn - lastSeen[lastSpoken]
 		}
 
 		lastSeen[lastSpoken] = turn
@@ -59,28 +58,17 @@ func (d *Day_15) PartA(input string) string {
 		turn++
 	}
 
-	return strconv.Itoa(lastSpoken)
+	return lastSpoken
+}
+
+func (d *Day_15) PartA(input string) string {
+	startingNumbers := getLines(input)
+
+	return strconv.Itoa(playGame(2020, startingNumbers))
 }
 
 func (d *Day_15) PartB(input string) string {
-	lastSeen := make(map[int]int)
-
-	turn := 1
-	lastSpoken := 0
 	startingNumbers := getLines(input)
 
-	for turn <= 30000000 {
-		next := 0
-		if turn <= len(startingNumbers) {
-			next = startingNumbers[turn-1]
-		} else if t, ok := lastSeen[lastSpoken]; ok {
-			next = turn - t
-		}
-
-		lastSeen[lastSpoken] = turn
-		lastSpoken = next
-		turn++
-	}
-
-	return strconv.Itoa(lastSpoken)
+	return strconv.Itoa(playGame(30000000, startingNumbers))
 }
