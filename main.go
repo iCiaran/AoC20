@@ -17,6 +17,9 @@ import (
 	"github.com/iCiaran/AoC20/day_11"
 	"github.com/iCiaran/AoC20/day_12"
 	"github.com/iCiaran/AoC20/day_13"
+	"github.com/iCiaran/AoC20/day_14"
+	"github.com/iCiaran/AoC20/day_15"
+	"github.com/iCiaran/AoC20/day_16"
 )
 
 type challenge interface {
@@ -82,6 +85,9 @@ func make_challenges() map[int]challenge {
 	challenges[11] = day_11.New()
 	challenges[12] = day_12.New()
 	challenges[13] = day_13.New()
+	challenges[14] = day_14.New()
+	challenges[15] = day_15.New()
+	challenges[16] = day_16.New()
 
 	return challenges
 }
