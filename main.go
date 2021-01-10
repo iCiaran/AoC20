@@ -23,6 +23,7 @@ import (
 	"github.com/iCiaran/AoC20/day_18"
 	"github.com/iCiaran/AoC20/day_20"
 	"github.com/iCiaran/AoC20/day_21"
+	"github.com/iCiaran/AoC20/day_23"
 	"github.com/iCiaran/AoC20/day_24"
 )
 
@@ -95,6 +96,7 @@ func make_challenges() map[int]challenge {
 	challenges[18] = day_18.New()
 	challenges[20] = day_20.New()
 	challenges[21] = day_21.New()
+	challenges[23] = day_23.New()
 	challenges[24] = day_24.New()
 
 	return challenges
